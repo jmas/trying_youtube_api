@@ -1,0 +1,18 @@
+{
+    "services": {
+        "youtube": {
+            "clientId": "",
+            "clientSecret": "",
+            "redirectUrl": ""
+        },
+        "mongo": {
+            "url": "mongodb://localhost:27017/trying_youtube_api"
+        }
+    },
+    "server": {
+        "port": 3000
+    },
+    "session": {
+        "mongoHost": "127.0.0.1"
+    }
+}
