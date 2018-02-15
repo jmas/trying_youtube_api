@@ -1,13 +1,15 @@
 {
-    "services": {
-        "mongo": {
-            "url": "mongodb://localhost:27017/trying_youtube_api"
-        },
-        "youtube": {
-            "clientId": "",
-            "clientSecret": "",
-            "redirectUrl": ""
-        }
+    "mongo": {
+        "url": "mongodb://localhost:27017/trying_youtube_api"
+    },
+    "youtube": {
+        "clientId": "",
+        "clientSecret": "",
+        "redirectUrl": ""
+    },
+    "db": {
+        "url": "mongodb://localhost:27017",
+        "dbName": ""
     },
     "server": {
         "port": 3000
