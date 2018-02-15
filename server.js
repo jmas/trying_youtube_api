@@ -25,8 +25,8 @@ const getRoute = name => require(`./routes/${name}`)(getDep);
 
 router.get('/signin', getRoute('signin'));
 router.get('/signup', getRoute('signup'));
-router.get('/youtube_auth', getRoute('youtubeAuth'));
-router.get('/youtube_auth_callback', getRoute('youtubeAuthCallback'));
+router.get('/youtube_auth', getRoute('youtube_auth'));
+router.get('/youtube_auth_callback', getRoute('youtube_auth_callback'));
 
 /* ~~ Run ~~ */
 
