@@ -8,7 +8,7 @@ class Youtube {
         redirectUrl,
         scope = [
             'https://www.googleapis.com/auth/youtube.readonly',
-        ],
+        ]
     ) {
         this._oauth2Client = new OAuth2(
             clientId,
