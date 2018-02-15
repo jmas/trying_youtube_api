@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "NODE_PATH=. node ./server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@root": "file:../",
     "googleapis": "^26.0.1",
     "jsdom": "^11.6.2",
     "koa": "^2.5.0",

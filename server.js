@@ -1,18 +1,17 @@
 const Koa = require('koa');
+const path = require('path');
 const session = require('koa-generic-session');
 const MongoStore = require('koa-generic-session-mongo');
 const Router = require('koa-router');
-const { initServices } = require('./helpers/services');
 const config = require('./server_config.json');
+const Youtube = require('./classes/Youtube');
 
 const app = new Koa();
 const router = new Router();
-
-/* -- Services -- */
-
-const services = initServices(
-    config.services,
-    name => require(`./services/${name}`)
+const youtube = new Youtube(
+    config.youtube.clientId,
+    config.youtube.clientSecret,
+    config.youtube.redirectUrl
 );
 
 /* -- Session -- */
@@ -28,7 +27,7 @@ app.use(session({
 /* -- Routing -- */
 
 router.get('/youtube_auth', async (ctx, next) => {
-    ctx.response.redirect((await services).youtube.generateAuthUrl());
+    ctx.response.redirect(youtube.generateAuthUrl());
     next();
 });
 
