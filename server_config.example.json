@@ -1,7 +1,4 @@
 {
-    "mongo": {
-        "url": "mongodb://localhost:27017/trying_youtube_api"
-    },
     "youtube": {
         "clientId": "",
         "clientSecret": "",
@@ -11,11 +8,11 @@
         "url": "mongodb://localhost:27017",
         "dbName": ""
     },
-    "server": {
-        "port": 3000
-    },
     "session": {
         "mongoHost": "127.0.0.1",
         "keys": ["keya", "keyb"]
+    },
+    "server": {
+        "port": 3000
     }
 }
