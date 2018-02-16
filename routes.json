@@ -1,0 +1,6 @@
+[
+    { "method": "get",  "path": "/auth",                    "route": "auth/read" },
+    { "method": "put",  "path": "/auth",                    "route": "auth/update" },
+    { "method": "get", "path": "/auth",                    "route": "auth/create" },
+    { "method": "get",  "path": "/auth/youtube_callback",   "route": "auth/youtube_callback" }
+]

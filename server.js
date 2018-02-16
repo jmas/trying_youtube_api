@@ -2,32 +2,30 @@ const Koa = require('koa');
 const path = require('path');
 const session = require('koa-generic-session');
 const SessionMongoStore = require('koa-generic-session-mongo');
+const redisStore = require('koa-redis');
 const Router = require('koa-router');
 const config = require('./server_config.json');
-const getDep = require('./get_dep');
 
 const app = new Koa();
-const router = new Router();
 
 /* ~~ Session ~~ */
 
 app.keys = config.session.keys;
 
 app.use(session({
-    store: new SessionMongoStore({
-        host: config.session.mongoHost,
-        db: config.db.dbName,
+    store: redisStore({
+        // Options specified here
     })
 }));
 
 /* ~~ Routing ~~ */
 
+const router = new Router();
+const routes = require('./routes.json');
+const getDep = require('./get_dep');
 const getRoute = name => require(`./routes/${name}`)(getDep);
 
-router.get('/signin', getRoute('signin'));
-router.get('/signup', getRoute('signup'));
-router.get('/youtube_auth', getRoute('youtube_auth'));
-router.get('/youtube_auth_callback', getRoute('youtube_auth_callback'));
+routes.forEach(({ method, path, route }) => router[method](path, getRoute(route)));
 
 /* ~~ Run ~~ */
 
