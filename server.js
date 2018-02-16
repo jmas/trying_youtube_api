@@ -1,43 +1,33 @@
 const Koa = require('koa');
 const path = require('path');
 const session = require('koa-generic-session');
-const MongoStore = require('koa-generic-session-mongo');
+const SessionMongoStore = require('koa-generic-session-mongo');
+const redisStore = require('koa-redis');
 const Router = require('koa-router');
 const config = require('./server_config.json');
-const Youtube = require('./classes/Youtube');
 
 const app = new Koa();
-const router = new Router();
-const youtube = new Youtube(
-    config.youtube.clientId,
-    config.youtube.clientSecret,
-    config.youtube.redirectUrl
-);
 
-/* -- Session -- */
+/* ~~ Session ~~ */
 
 app.keys = config.session.keys;
 
 app.use(session({
-    store: new MongoStore({
-        host: config.session.mongoHost,
-    }),
+    store: redisStore({
+        // Options specified here
+    })
 }));
 
-/* -- Routing -- */
+/* ~~ Routing ~~ */
 
-router.get('/youtube_auth', async (ctx, next) => {
-    ctx.response.redirect(youtube.generateAuthUrl());
-    next();
-});
+const router = new Router();
+const routes = require('./routes.json');
+const getDep = require('./get_dep');
+const getRoute = name => require(`./routes/${name}`)(getDep);
 
-router.get('/youtube_auth_callback', (ctx, next) => {
-    console.log(ctx.request);
-    ctx.response.body = ctx.url;
-    next();
-});
+routes.forEach(({ method, path, route }) => router[method](path, getRoute(route)));
 
-/* -- Run -- */
+/* ~~ Run ~~ */
 
 app.use(router.routes());
 app.use(router.allowedMethods());

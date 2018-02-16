@@ -7,11 +7,15 @@
         "clientSecret": "",
         "redirectUrl": ""
     },
-    "server": {
-        "port": 3000
+    "db": {
+        "url": "mongodb://localhost:27017",
+        "dbName": ""
     },
     "session": {
         "mongoHost": "127.0.0.1",
-        "keys": ["keya", "keyb"]
+        "keys": ["keys", "keykeys"]
+    },
+    "server": {
+        "port": 3000
     }
 }
