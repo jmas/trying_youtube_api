@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const path = require('path');
 const session = require('koa-generic-session');
-const MongoStore = require('koa-generic-session-mongo');
+const SessionMongoStore = require('koa-generic-session-mongo');
 const Router = require('koa-router');
 const config = require('./server_config.json');
 const getDep = require('./get_dep');
@@ -14,9 +14,10 @@ const router = new Router();
 app.keys = config.session.keys;
 
 app.use(session({
-    store: new MongoStore({
+    store: new SessionMongoStore({
         host: config.session.mongoHost,
-    }),
+        db: config.db.dbName,
+    })
 }));
 
 /* ~~ Routing ~~ */

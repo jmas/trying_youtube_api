@@ -10,7 +10,7 @@
     },
     "session": {
         "mongoHost": "127.0.0.1",
-        "keys": ["keya", "keyb"]
+        "keys": ["keys", "keykeys"]
     },
     "server": {
         "port": 3000
