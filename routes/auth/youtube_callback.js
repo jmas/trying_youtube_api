@@ -1,3 +1,3 @@
 module.exports = getDep => async ctx => {
-    ctx.response.body = ctx.url;
+    ctx.body = ctx.url;
 };
