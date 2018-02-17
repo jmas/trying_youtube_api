@@ -7,7 +7,7 @@
     "test": "NODE_PATH=. NODE_ENV=test mocha test.spec.js",
     "server": "NODE_PATH=. node ./server.js",
     "server-dev": "DEV=1 NODE_PATH=. node ./server.js",
-    "init": "node ./scripts/create_collections.js"
+    "init": "node ./scripts/apply_schema.js users"
   },
   "author": "",
   "license": "ISC",
