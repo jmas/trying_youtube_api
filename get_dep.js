@@ -21,7 +21,7 @@ module.exports = lazyDeps({
     },
 
     async youtube() {
-        const Youtube = require('./classes/streaming_services//youtube');
+        const Youtube = require('./streaming_services//youtube');
         return new Youtube(
             config.youtube.clientId,
             config.youtube.clientSecret,
@@ -30,7 +30,7 @@ module.exports = lazyDeps({
     },
 
     async twitch() {
-        const Twitch = require('./classes/streaming_services/twitch');
+        const Twitch = require('./streaming_services/twitch');
         return new Twitch({
             clientId: config.twitch.clientId,
             clientSecret: config.twitch.clientSecret,

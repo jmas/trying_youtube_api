@@ -1,5 +1,5 @@
 const getDep = require('../get_dep');
-const mongoSchemas = require('./data/collections_schemas');
+const mongoSchemas = require('../data/collections_schemas');
 
 (async () => {
     
