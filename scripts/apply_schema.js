@@ -7,25 +7,25 @@ if (!schemaName) {
 const schema = require(`../schemas/${schemaName}.json`);
 const collectionName = schemaName;
 
+async function createOrModifyCollection(db, collectionName, options) {
+    const collectionInfo = await db.listCollections({
+        name: collectionName,
+    });
+    if (collectionInfo) {
+        return await db.command({
+            collMod: collectionName,
+            ...options,
+        });
+    }
+    return await db.createCollection(collectionName, schema);
+}
+
 (async () => {
     
     const db = await getDep('db');
 
-    async function createOrModifyCollection(collectionName, options) {
-        const collectionInfo = await db.listCollections({
-            name: collectionName,
-        });
-        if (collectionInfo) {
-            return await db.command({
-                collMod: collectionName,
-                ...options,
-            });
-        }
-        return await db.createCollection(collectionName, schema);
-    }
-
     try {
-        const result = await createOrModifyCollection(collectionName, {
+        const result = await createOrModifyCollection(db, collectionName, {
             validator: {
                 $jsonSchema: schema,
             },

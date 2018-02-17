@@ -21,7 +21,7 @@ module.exports = lazyDeps({
     },
 
     async youtube() {
-        const Youtube = require('./streaming_services//youtube');
+        const Youtube = require('./streaming_services/youtube');
         return new Youtube(
             config.youtube.clientId,
             config.youtube.clientSecret,
