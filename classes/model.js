@@ -1,5 +1,5 @@
 class Model {
-    constructor(raw) {
+    constructor(raw={}) {
         this._raw = raw;
     }
 

@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "required": [ "displayName", "name", "email", "avatarUrl" ],
+    "properties": {
+        "displayName": {
+            "type": "string",
+            "description": "must be a string and is required"
+        },
+        "name": {
+            "type": "string",
+            "description": "must be an string is required"
+        },
+        "email": {
+            "type": "string",
+            "description": "must be an email string is required"
+        },
+        "avatarUrl": {
+            "type": "string",
+            "description": "must be an string is required"
+        },
+        "bio": {
+            "type": "string",
+            "description": "must be an string is not required"
+        }
+    }
+}

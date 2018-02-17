@@ -1,24 +1,27 @@
 class Repo {
-    constructor(db, collectionName, Model) {
+    constructor(db, options={}) {
         this._db = db;
-        this._collection = this._db.collection(collectionName);
-        this._Model = Model;
+        this._options = options;
+        this._collection = this._db.collection(this._options.collectionName);
     }
 
     async findOne(query={}) {
         const raw = await this._collection.findOne(query);
-        const Model = this._Model;
+        const { Model } = this._options;
+        if (!raw) {
+            return null;
+        }
         return new Model(raw);
     }
 
     async find(query={}) {
-        const Model = this._Model;
+        const { Model } = this._options;
         return (await this._collection.find(query).toArray()).map(raw => new Model(raw));
     }
 
     async save(model) {
+        const { Model } = this._options;
         const modelId = model.getId();
-        const Model = this._Model;
         if (modelId) {
             const { result } = await this._collection.updateOne({ _id: modelId }, { $set: model.getRaw() });
             return result.ok > 0 ? model: null;

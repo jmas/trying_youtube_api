@@ -21,12 +21,16 @@ class Youtube {
     /**
      * @param {String} state 
      */
-    generateAuthUrl(state) {
+    getAuthorizationUrl(state) {
         return this._oauth2Client.generateAuthUrl({
             access_type: 'offline',
             scope: this._scope,
             state,
         });
+    }
+
+    formatUserData() {
+        return {};
     }
 }
 

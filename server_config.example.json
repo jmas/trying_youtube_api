@@ -1,11 +1,13 @@
 {
-    "mongo": {
-        "url": "mongodb://localhost:27017/trying_youtube_api"
-    },
     "youtube": {
         "clientId": "",
         "clientSecret": "",
-        "redirectUrl": ""
+        "redirectUrl": "http://localhost:3000/auth/youtube/callback"
+    },
+    "twitch": {
+        "clientId": "",
+        "clientSecret": "",
+        "redirectUrl": "http://localhost:3000/auth/twitch/callback"
     },
     "db": {
         "url": "mongodb://localhost:27017",
