@@ -69,4 +69,30 @@ module.exports = lazyDeps({
             },
         };
     },
+
+    async helpers() {
+        return {
+            get(name) {
+                return require(`./helpers/${name}`);
+            },
+        };
+    },
+
+    async models() {
+        return {
+            get(name) {
+                return require(`./models/${name}`);
+            },
+        };
+    },
+
+    async validator() {
+        return {
+            get(name) {
+                const userSchema = require(`./schemas/${name}.json`);
+                const { getValidationErrors } = require('./helpers/validate');
+                return data => getValidationErrors(data, userSchema);
+            },
+        };
+    },
 });
