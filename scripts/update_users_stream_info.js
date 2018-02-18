@@ -7,8 +7,7 @@ const User = require('../models/user');
 const { getValidationErrors } = require('../helpers/validate');
 const userSchema = require('../schemas/users.json');
 
-(async () => {
-
+module.exports = async args => {
     const users = await getDep('users');
     const twitch = await getDep('twitch');
     const foundUsers = await users.find({
@@ -51,29 +50,25 @@ const userSchema = require('../schemas/users.json');
     let successCount = 0;
     let failCount = 0;
 
-    try {
-        for (let i=0; i<patchedUsers.length; i++) {
-            const patchedUser = patchedUsers[i];
-            console.log('[update_users_stream_info] patchedUser', patchedUser);
-            const errors = getValidationErrors(patchedUser.getRaw(), userSchema);
-            if (errors.length > 0) {
-                console.log('[update_users_stream_info] errors', errors);
-                continue;
-            }
-            if (await users.save(patchedUser)) {
-                console.log('[update_users_stream_info] ok');
-                successCount++;
-            } else {
-                console.log('[update_users_stream_info] fail');
-                failCount++;
-            }
+    for (let i=0; i<patchedUsers.length; i++) {
+        const patchedUser = patchedUsers[i];
+        console.log('[update_users_stream_info] patchedUser', patchedUser);
+        const errors = getValidationErrors(patchedUser.getRaw(), userSchema);
+        if (errors.length > 0) {
+            console.log('[update_users_stream_info] errors', errors);
+            continue;
         }
-    } catch (error) {
-        console.log('[update_users_stream_info] error', error);
+        if (await users.save(patchedUser)) {
+            console.log('[update_users_stream_info] ok');
+            successCount++;
+        } else {
+            console.log('[update_users_stream_info] fail');
+            failCount++;
+        }
     }
 
-    console.log('[update_users_stream_info] successCount', successCount);
-    console.log('[update_users_stream_info] failCount', failCount);
-
-    process.exit(failCount === 0 ? 0: 1);
-})();
+    return {
+        successCount,
+        failCount,
+    };
+};
