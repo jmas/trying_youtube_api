@@ -6,6 +6,8 @@ module.exports = getDep => async ctx => {
     const helpers = await getDep('helpers');
     const models = await getDep('models');
     const logger = (await getDep('logger')).withNamespace('auth/login_callback');
+    const users = await getDep('users');
+
     const getValidationErrors = (await getDep('validator')).get('users');
     const User = models.get('user');
     const { getStreamingService } = helpers.get('streaming_services');
@@ -20,7 +22,6 @@ module.exports = getDep => async ctx => {
     const service = await getStreamingService(ctx.params.service, getDep);
     const tokens = await service.getAccessToken(code);
     const userFromService = await service.getAuthenticatedUser(tokens.access_token);
-    const users = await getDep('users');
     const foundUser = await users.findOne({
         email: userFromService.email,
     });

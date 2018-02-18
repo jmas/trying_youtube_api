@@ -4,5 +4,5 @@
     { "method": "get",  "path": "/auth/login/:service/callback",  "route": "auth/login_callback" },
     { "method": "get",  "path": "/auth/logout",                   "route": "auth/logout" },
     
-    { "method": "get",  "path": "/user/:id",                      "route": "user/read" }
+    { "method": "get",  "path": "/user/:id",                      "route": "user/view", "name": "userView" }
 ]

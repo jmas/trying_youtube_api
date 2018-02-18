@@ -5,7 +5,7 @@
 module.exports = getDep => async ctx => {
     const logger = (await getDep('logger')).withNamespace('auth/login');
     const { getStreamingService } = (await getDep('helpers')).get('streaming_services');
-    
+
     if (ctx.session.auth) {
         const url = ctx.router.url('authUser');
         logger.log('redirecting', url);
