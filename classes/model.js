@@ -7,8 +7,8 @@ class Model {
         return this._raw._id;
     }
 
-    get(key) {
-        return this._raw[key];
+    get(key, defaultValue=null) {
+        return key in this._raw ? this._raw[key]: defaultValue;
     }
 
     getRaw() {
