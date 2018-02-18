@@ -18,11 +18,12 @@ const getDep = require('./get_dep');
     const runScript = require(`./scripts/${script}.js`);
     const loggerScript = loggerDep.withNamespace(script);
     try {
+        logger.info('run', script);
         const result = await runScript(args, loggerScript);
-        logger.info('result', result);
+        logger.info('result', script, result);
         process.exit(0);
     } catch (error) {
-        logger.error('error', error);
+        logger.error('error', script, error);
         process.exit(1);
     }
 })();
