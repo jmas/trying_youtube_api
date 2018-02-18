@@ -1,3 +1,7 @@
+/**
+ * @param {Function} getDep - get dependency
+ * @returns {Function}
+ */
 module.exports = getDep => async ctx => {
     const logger = (await getDep('logger')).withNamespace('auth/login');
     const { getStreamingService } = (await getDep('helpers')).get('streaming_services');

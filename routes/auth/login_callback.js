@@ -1,11 +1,7 @@
-async function saveUser(user, users, getValidationErrors) {
-    const errors = getValidationErrors(user.getRaw());
-    if (errors.length > 0) {
-        throw `Can't save auth user because have validation errors.`;
-    }
-    return await users.save(user);
-}
-
+/**
+ * @param {Function} getDep - get dependency
+ * @returns {Function}
+ */
 module.exports = getDep => async ctx => {
     const helpers = await getDep('helpers');
     const models = await getDep('models');
@@ -41,3 +37,16 @@ module.exports = getDep => async ctx => {
     };
     ctx.redirect(ctx.router.url('authUser'));
 };
+
+/**
+ * @param {Object} user 
+ * @param {Object} users 
+ * @param {Function} getValidationErrors 
+ */
+async function saveUser(user, users, getValidationErrors) {
+    const errors = getValidationErrors(user.getRaw());
+    if (errors.length > 0) {
+        throw `Can't save auth user because have validation errors.`;
+    }
+    return await users.save(user);
+}
