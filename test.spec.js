@@ -19,15 +19,3 @@ describe('Users', async () => {
     });
 });
 
-describe('validators', async () => {
-    const { validateOnSave } = require('./validators/user');
-
-    // it('validateOnSave', async () => {
-    //     const newUser = new User();
-    //     try {
-    //         await validateOnSave(getDep)(newUser);
-    //     } catch(error) {
-    //         console.log(error);
-    //     }
-    // });
-});
