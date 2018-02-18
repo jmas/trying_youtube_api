@@ -72,8 +72,8 @@ const userSchema = require('../schemas/users.json');
         console.log('[update_users_stream_info] error', error);
     }
 
-    console.log(`Success: ${successCount}`);
-    console.log(`Fail: ${failCount}`);
+    console.log('[update_users_stream_info] successCount', successCount);
+    console.log('[update_users_stream_info] failCount', failCount);
 
     process.exit(failCount === 0 ? 0: 1);
 })();
