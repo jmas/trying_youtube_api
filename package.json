@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_PATH=. NODE_ENV=test mocha test.spec.js",
-    "server": "NODE_PATH=. node ./server.js",
-    "server_dev": "DEV=1 NODE_PATH=. node ./server.js",
+    "test": "NODE_ENV=test mocha test.spec.js",
+    "server": "node ./server.js",
     "init": "node ./run_script.js script=apply_schema schemaName=users",
     "update_users_stream_info": "node ./run_script.js script=update_users_stream_info"
   },

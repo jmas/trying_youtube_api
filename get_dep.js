@@ -6,10 +6,10 @@ module.exports = lazyDeps({
         const { url, dbName } = config.db;
         const { MongoClient } = require('mongodb');
         const db = (await MongoClient.connect(url)).db(dbName);
-        if (process.env.DEV) {
+        if (config.debug) {
             const MongoSchemer = require('mongo-schemer');
             return MongoSchemer.explainSchemaErrors(db, {
-                onError: errors => console.log('[get_dep/MongoSchemer] explainSchemaErrors', errors),
+                onError: errors => console.log('[get_dep] db/explainSchemaErrors', errors),
             });
         }
         return db;
