@@ -1,5 +1,5 @@
 const lazyDeps = require('./helpers/lazy_deps');
-const config = require('./server_config.json');
+const config = require('./config.json');
 
 module.exports = lazyDeps({
     async db(getDep) {
@@ -37,5 +37,36 @@ module.exports = lazyDeps({
             redirectUri: config.twitch.redirectUrl,
             scopes: ['user_read'],
         });
+    },
+
+    async logger() {
+        const defColor = '\x1b[0m';
+        const logColor = defColor;
+        const infoColor = '\x1b[34m';
+        const errorColor = '\x1b[31m';
+        const warnColor = '\x1b[33m';
+        function log(namespace, color='', ...args) {
+            if (config.debug) {
+                console.log(`${color}[${namespace}]${defColor}`, ...args);
+            }
+        }
+        return {
+            withNamespace(namespace) {
+                return {
+                    log(...args) {
+                        log(namespace, logColor, ...args);
+                    },
+                    info(...args) {
+                        log(namespace, infoColor, ...args);
+                    },
+                    error(...args) {
+                        log(namespace, errorColor, ...args);
+                    },
+                    warn(...args) {
+                        log(namespace, warnColor, ...args);
+                    },
+                };
+            },
+        };
     },
 });

@@ -20,5 +20,10 @@
     "server": {
         "port": 3000
     },
+    "scripts": {
+        "updateUsersStreamInfo": {
+            "delay": 60000
+        }
+    },
     "debug": true
 }

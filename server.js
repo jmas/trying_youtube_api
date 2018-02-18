@@ -5,7 +5,7 @@ const SessionMongoStore = require('koa-generic-session-mongo');
 const redisStore = require('koa-redis');
 const Router = require('koa-router');
 const json = require('koa-json');
-const config = require('./server_config.json');
+const config = require('./config.json');
 const app = new Koa();
 
 /* ~~ Setup: Output ~~ */

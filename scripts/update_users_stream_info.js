@@ -2,6 +2,7 @@ const getDep = require('../get_dep');
 const User = require('../models/user');
 const { getValidationErrors } = require('../helpers/validate');
 const userSchema = require('../schemas/users.json');
+const config = require('../config.json');
 
 /**
  * 1. Get list of 100 users from DB that have 'streamInfoUpdateDate' out of date
@@ -9,7 +10,7 @@ const userSchema = require('../schemas/users.json');
  * 3. Update users 'streamInfo' into DB
  * @param {Object} args - script arguments
  */
-module.exports = async args => {
+module.exports = async (args, logger) => {
     const users = await getDep('users');
     const twitch = await getDep('twitch');
     const foundUsers = await users.find({
@@ -22,7 +23,7 @@ module.exports = async args => {
             {
                 streamInfoUpdateDate: {
                     $exists: true,
-                    $lt: new Date((new Date()).getTime() - 60 * 1000),
+                    $lt: new Date((new Date()).getTime() - config.scripts.updateUsersStreamInfo.delay),
                 },
             },
         ],
@@ -54,17 +55,17 @@ module.exports = async args => {
 
     for (let i=0; i<patchedUsers.length; i++) {
         const patchedUser = patchedUsers[i];
-        console.log('[update_users_stream_info] patchedUser', patchedUser);
+        logger.info('patchedUser', patchedUser);
         const errors = getValidationErrors(patchedUser.getRaw(), userSchema);
         if (errors.length > 0) {
-            console.log('[update_users_stream_info] errors', errors);
+            logger.error('errors', errors);
             continue;
         }
         if (await users.save(patchedUser)) {
-            console.log('[update_users_stream_info] ok');
+            logger.info('ok');
             successCount++;
         } else {
-            console.log('[update_users_stream_info] fail');
+            logger.error('fail');
             failCount++;
         }
     }

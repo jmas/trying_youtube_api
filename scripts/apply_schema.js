@@ -24,10 +24,10 @@ async function createOrUpdateCollectionOptions(db, collectionName, options={}) {
  * @param {Object} args -script arguments
  * @param {String} args.schemaName - schema name
  */
-module.exports = async args => {
+module.exports = async (args, logger) => {
     const schemaName = args.schemaName;
     if (!schemaName) {
-        throw `Please pass schema name as first argument.`;
+        throw `Please provide schema name as first argument.`;
     }
     const schema = require(`../schemas/${schemaName}.json`);
     const collectionName = schemaName;
