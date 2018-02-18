@@ -3,7 +3,7 @@ const path = require('path');
 const session = require('koa-generic-session');
 const SessionMongoStore = require('koa-generic-session-mongo');
 const redisStore = require('koa-redis');
-const Router = require('koa-router');
+const createRouter = require('./helpers/create_router');
 const json = require('koa-json');
 const config = require('./config.json');
 const routes = require('./routes.json');
@@ -11,7 +11,12 @@ const getDep = require('./get_dep');
 const app = new Koa();
 
 (async () => {
+
+    /* ~~ Setup: Logger ~~ */
+    
     const logger = (await getDep('logger')).withNamespace('app');
+
+    app.on('error', error => logger.error('error', error));
 
     /* ~~ Setup: Output ~~ */
 
@@ -27,15 +32,19 @@ const app = new Koa();
 
     /* ~~ Setup: Routing ~~ */
 
-    const router = new Router();
-    const getRoute = name => require(`./routes/${name}`)(getDep);
-    
-    routes.forEach(({ method, path, route }) => router[method](path, getRoute(route)));
+    try {
+        const router = await createRouter(
+            routes,
+            name => require(`./routes/${name}`),
+            getDep
+        );
+        app.use(router.routes());
+        app.use(router.allowedMethods());
+    } catch (error) {
+        logger.log('createRouter', error);
+    }
 
     /* ~~ Run ~~ */
-
-    app.use(router.routes());
-    app.use(router.allowedMethods());
 
     app.listen(config.server.port);
     logger.info(`Server listen ${config.server.port}...`);

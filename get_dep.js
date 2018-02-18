@@ -41,10 +41,10 @@ module.exports = lazyDeps({
 
     async logger() {
         const defColor = '\x1b[0m';
-        const logColor = defColor;
-        const infoColor = '\x1b[34m';
-        const errorColor = '\x1b[31m';
-        const warnColor = '\x1b[33m';
+        const logColor = '\x1b[30m\x1b[47m';
+        const infoColor = '\x1b[37m\x1b[44m';
+        const errorColor = '\x1b[37m\x1b[41m';
+        const warnColor = '\x1b[37m\x1b[43m';
         function log(namespace, color='', ...args) {
             if (config.debug) {
                 console.log(`${color}[${namespace}]${defColor}`, ...args);

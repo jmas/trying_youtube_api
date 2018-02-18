@@ -1,6 +1,6 @@
 {
     "type": "object",
-    "required": [ "displayName", "name", "email", "avatarUrl", "service", "tokens" ],
+    "required": [ "displayName", "name", "email", "avatarUrl", "service", "tokens", "live" ],
     "properties": {
         "displayName": {
             "type": "string",

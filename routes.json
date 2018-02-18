@@ -1,7 +1,8 @@
 [
-    { "method": "get",  "path": "/auth",                    "route": "auth/read" },
-    { "method": "put",  "path": "/auth",                    "route": "auth/update" },
-    { "method": "post", "path": "/auth/:service",           "route": "auth/create" },
-    { "method": "get",  "path": "/auth/:service/callback",  "route": "auth/callback" },
-    { "method": "get",  "path": "/user",                    "route": "user/read" }
+    { "method": "get",  "path": "/auth/user",                     "route": "auth/user", "name": "authUser" },
+    { "method": "get",  "path": "/auth/login/:service",           "route": "auth/login" },
+    { "method": "get",  "path": "/auth/login/:service/callback",  "route": "auth/login_callback" },
+    { "method": "get",  "path": "/auth/logout",                   "route": "auth/logout" },
+    
+    { "method": "get",  "path": "/user/:id",                      "route": "user/read" }
 ]
