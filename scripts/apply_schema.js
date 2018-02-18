@@ -23,6 +23,7 @@ async function createOrUpdateCollectionOptions(db, collectionName, options={}) {
  * Apply schema to MongoDB.
  * @param {Object} args -script arguments
  * @param {String} args.schemaName - schema name
+ * @param {Object} logger - logger
  */
 module.exports = async (args, logger) => {
     const schemaName = args.schemaName;

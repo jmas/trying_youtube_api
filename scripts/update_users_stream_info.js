@@ -9,6 +9,7 @@ const config = require('../config.json');
  * 2. Go to Twitch API to actualize information about users streams
  * 3. Update users 'streamInfo' into DB
  * @param {Object} args - script arguments
+ * @param {Object} logger - logger
  */
 module.exports = async (args, logger) => {
     const users = await getDep('users');
