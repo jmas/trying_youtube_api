@@ -1,3 +1,5 @@
+const { ObjectID } = require('mongodb');
+
 class Repo {
     constructor(db, options={}) {
         this._db = db;
@@ -17,6 +19,10 @@ class Repo {
     async find(query={}, options={}) {
         const { Model } = this._options;
         return (await this._collection.find(query, options).toArray()).map(raw => new Model(raw));
+    }
+
+    async findById(id) {
+        return await this.findOne({ _id: new ObjectID(id) });
     }
 
     async save(model) {

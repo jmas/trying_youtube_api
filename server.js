@@ -12,11 +12,23 @@ const app = new Koa();
 
 (async () => {
 
-    /* ~~ Setup: Logger ~~ */
+    /* ~~ Setup: Logger & Error handling ~~ */
     
     const logger = (await getDep('logger')).withNamespace('app');
 
-    app.on('error', error => logger.error('error', error));
+    app.use(async (ctx, next) => {
+        try {
+            await next();
+        } catch (error) {
+            ctx.status = error.status || 500;
+            ctx.body = config.debug ? error.message: 'Internal Server Error';
+            logger.error('error', error);
+        }
+    });
+
+    app.on('error', error => {
+        logger.error('error', error);
+    });
 
     /* ~~ Setup: Output ~~ */
 

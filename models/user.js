@@ -14,6 +14,25 @@ class User extends Model {
             ...raw,
         });
     }
+
+    getPublicRaw() {
+        const {
+            displayName,
+            name,
+            email,
+            avatarUrl,
+            bio,
+            live,
+        } = this.getRaw();
+        return {
+            displayName,
+            name,
+            email,
+            avatarUrl,
+            bio,
+            live,
+        };
+    }
 }
 
 module.exports = User;
