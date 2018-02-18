@@ -1,3 +1,5 @@
 .vscode
+.cache
 node_modules
 config.json
+client_dist

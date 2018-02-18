@@ -1,10 +1,11 @@
-const Koa = require('koa');
 const path = require('path');
+const Koa = require('koa');
 const session = require('koa-generic-session');
 const SessionMongoStore = require('koa-generic-session-mongo');
 const redisStore = require('koa-redis');
-const createRouter = require('./helpers/create_router');
 const json = require('koa-json');
+const serve = require('koa-static');
+const createRouter = require('./helpers/create_router');
 const config = require('./config.json');
 const routes = require('./routes.json');
 const getDep = require('./get_dep');
@@ -29,6 +30,13 @@ const app = new Koa();
     app.on('error', error => {
         logger.error('error', error);
     });
+
+    /* ~~ Setup: Static ~~ */
+
+    if (process.env.STATIC_PATH) {
+        logger.log('STATIC_PATH', process.env.STATIC_PATH);
+        app.use(serve(process.env.STATIC_PATH));
+    }
 
     /* ~~ Setup: Output ~~ */
 
