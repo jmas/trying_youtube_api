@@ -7,6 +7,10 @@ class Model {
         return this._raw._id;
     }
 
+    get(key) {
+        return this._raw[key];
+    }
+
     getRaw() {
         return this._raw;
     }

@@ -5,7 +5,7 @@ class Repo {
         this._collection = this._db.collection(this._options.collectionName);
     }
 
-    async findOne(query={}) {
+    async findOne(query={}, options={}) {
         const raw = await this._collection.findOne(query);
         const { Model } = this._options;
         if (!raw) {
@@ -14,9 +14,9 @@ class Repo {
         return new Model(raw);
     }
 
-    async find(query={}) {
+    async find(query={}, options={}) {
         const { Model } = this._options;
-        return (await this._collection.find(query).toArray()).map(raw => new Model(raw));
+        return (await this._collection.find(query, options).toArray()).map(raw => new Model(raw));
     }
 
     async save(model) {

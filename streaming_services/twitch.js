@@ -32,6 +32,18 @@ class Twitch {
             });
         });
     }
+
+    async getStreams(parameters) {
+        return new Promise((resolve, reject) => {
+            this._api.getStreams(parameters, (err, body) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(body.streams);
+                }
+            });
+        });
+    }
     
     formatUserData({ display_name, name, email, logo, bio }) {
         return {

@@ -1,6 +1,6 @@
 {
     "type": "object",
-    "required": [ "displayName", "name", "email", "avatarUrl" ],
+    "required": [ "displayName", "name", "email", "avatarUrl", "service", "tokens" ],
     "properties": {
         "displayName": {
             "type": "string",
@@ -21,6 +21,26 @@
         "bio": {
             "type": "string",
             "description": "must be an string is not required"
+        },
+        "service": {
+            "type": "string",
+            "description": "must be an string is not required"
+        },
+        "tokens": {
+            "type": "object",
+            "description": "must be an object is not required"
+        },
+        "streamInfo": {
+            "type": "object",
+            "description": "must be an object is not required"
+        },
+        "streamInfoLastUpdateDate": {
+            "type": "object",
+            "description": "must be an date-time is not required"
+        },
+        "live": {
+            "type": "boolean",
+            "description": "must be an boolean is not required"
         }
     }
 }

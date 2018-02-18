@@ -6,10 +6,10 @@ function getValidationErrors(data, scheme) {
     if (validationResult.valid) {
         return [];
     }
-    return validationResult.errors.map(({ argument, message }) => {
+    return validationResult.errors.map(({ property, schema }) => {
         return {
-            property: argument,
-            message: scheme.properties[argument].description,
+            property,
+            description: schema.description,
         };
     });
 }

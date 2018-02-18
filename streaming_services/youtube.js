@@ -29,6 +29,18 @@ class Youtube {
         });
     }
 
+    async getAccessToken(code) {
+        return {};
+    }
+
+    async getAuthenticatedUser(accessToken) {
+        return {};
+    }
+    
+    async getStreams() {
+        return [];
+    }
+
     formatUserData() {
         return {};
     }
