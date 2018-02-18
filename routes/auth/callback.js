@@ -14,8 +14,9 @@ async function saveUser(userRaw, users, ctx) {
 }
 
 module.exports = getDep => async ctx => {
+    const logger = (await getDep('logger')).withNamespace('auth/callback');
     const code = ctx.query.code;
-    console.log('[auth/callback] code', code);
+    logger.log('code', code);
     if (code) {
         try {
             const service = await getStreamingService(ctx.params.service, getDep);
@@ -25,7 +26,7 @@ module.exports = getDep => async ctx => {
             const foundUser = await users.findOne({
                 email: userFromService.email,
             });
-            console.log('[auth/callback] foundUser', foundUser);
+            logger.log('foundUser', foundUser);
             if (foundUser) {
                 ctx.body = foundUser.getRaw();
             } else {
@@ -36,7 +37,7 @@ module.exports = getDep => async ctx => {
                 }, users, ctx);
             }
         } catch (error) {
-            console.log('[auth/callback] error', error);
+            logger.log('error', error);
         }
     }
 };

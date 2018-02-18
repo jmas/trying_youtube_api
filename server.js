@@ -6,34 +6,38 @@ const redisStore = require('koa-redis');
 const Router = require('koa-router');
 const json = require('koa-json');
 const config = require('./config.json');
-const app = new Koa();
-
-/* ~~ Setup: Output ~~ */
-
-app.use(json());
-
-/* ~~ Setup: Session ~~ */
-
-app.keys = config.session.keys;
-
-app.use(session({
-    store: redisStore(),
-}));
-
-/* ~~ Setup: Routing ~~ */
-
-const router = new Router();
 const routes = require('./routes.json');
 const getDep = require('./get_dep');
-const getRoute = name => require(`./routes/${name}`)(getDep);
+const app = new Koa();
 
-routes.forEach(({ method, path, route }) =>
-    router[method](path, getRoute(route)));
+(async () => {
+    const logger = (await getDep('logger')).withNamespace('app');
 
-/* ~~ Run ~~ */
+    /* ~~ Setup: Output ~~ */
 
-app.use(router.routes());
-app.use(router.allowedMethods());
+    app.use(json());
 
-app.listen(config.server.port);
-console.log(`Server listen ${config.server.port}...`);
+    /* ~~ Setup: Session ~~ */
+
+    app.keys = config.session.keys;
+
+    app.use(session({
+        store: redisStore(),
+    }));
+
+    /* ~~ Setup: Routing ~~ */
+
+    const router = new Router();
+    const getRoute = name => require(`./routes/${name}`)(getDep);
+    
+    routes.forEach(({ method, path, route }) => router[method](path, getRoute(route)));
+
+    /* ~~ Run ~~ */
+
+    app.use(router.routes());
+    app.use(router.allowedMethods());
+
+    app.listen(config.server.port);
+    logger.info(`Server listen ${config.server.port}...`);
+
+})();

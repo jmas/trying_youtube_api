@@ -1,6 +1,7 @@
 const { getStreamingService } = require('../../helpers/streaming_services');
 
 module.exports = getDep => async ctx => {
+    const logger = (await getDep('logger')).withNamespace('auth/create');
     if (ctx.session.user) {
         ctx.body = null;
         return;
@@ -8,11 +9,11 @@ module.exports = getDep => async ctx => {
     try {
         const service = await getStreamingService(ctx.params.service, getDep);
         const authUrl = await service.getAuthorizationUrl();
-        console.log('[auth/create] authUrl', authUrl);
+        logger.log('authUrl', authUrl);
         if (authUrl) {
             ctx.response.redirect(authUrl);
         }
     } catch (error) {
-        console.log('[auth/create] error', error);
+        logger.log('error', error);
     }
 };
