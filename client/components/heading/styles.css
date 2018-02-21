@@ -1,0 +1,29 @@
+@value variables: "../../variables.css";
+@value textLarge, textXLarge, spaceMedium, spaceXLarge, spaceLarge from variables;
+
+.h1,
+.h2,
+.h3 {
+    margin-top: 0;
+}
+
+.h1 {
+    font-size: textXLarge;
+    font-weight: normal;
+    margin-bottom: spaceXLarge;
+}
+
+.h2 {
+    font-size: textLarge;
+    font-weight: normal;
+    margin-bottom: spaceLarge;
+}
+
+.h3 {
+    font-weight: normal;
+    margin-bottom: spaceMedium;
+}
+
+.centered {
+    text-align: center;
+}

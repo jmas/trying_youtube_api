@@ -1,0 +1,56 @@
+@value variables: "../../variables.css";
+@value videoPreviewPictureBg from variables;
+@value videoPreviewMiscColor from variables;
+@value videoPreviewTitleColor from variables;
+@value textSmall from variables;
+@value textMedium from variables;
+@value spaceSmall from variables;
+@value spaceMedium from variables;
+@value radiusSmall from variables;
+
+.container {
+
+}
+
+.picture {
+    display: block;
+    height: 180px;
+    background-color: videoPreviewPictureBg;
+    color: videoPreviewPictureBg;
+}
+
+.pictureLink {
+    display: block;
+    margin-bottom: spaceMedium;
+}
+
+.user {
+    font-size: textSmall;
+    margin-bottom: spaceSmall;
+}
+
+.title {
+    margin-bottom: spaceSmall;
+    font-size: textMedium;
+}
+
+.title :global(a) {
+    color: videoPreviewTitleColor;
+}
+
+.misc {
+    font-size: textSmall;
+    color: videoPreviewMiscColor;
+}
+
+.tags {
+
+}
+
+.viewing {
+
+}
+
+.live {    
+    composes: live from "../../globals.css";
+}

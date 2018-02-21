@@ -1,0 +1,28 @@
+@value textColor: #333;
+@value linkColor: #1577D1;
+@value bgColor: #fff;
+
+@value headerBgColor: #4F4F4F;
+@value headerTextColor: #fff;
+
+@value limiterWidth: 1024px;
+
+@value spaceSmall: 5px;
+@value spaceMedium: 10px;
+@value spaceLarge: 20px;
+@value spaceXLarge: 40px;
+
+@value textSmall: 12px;
+@value textMedium: 14px;
+@value textLarge: 18px;
+@value textXLarge: 24px;
+
+@value radiusSmall: 2px;
+@value radiusMedium: 3px;
+@value radiusLarge 6px;
+
+@value videoPreviewPictureBg: #4F4F4F;
+@value videoPreviewMiscColor: #828282;
+@value videoPreviewTitleColor: textColor;
+@value videoPreviewLiveColor: #fff;
+@value videoPreviewLiveBg: #E02B12;

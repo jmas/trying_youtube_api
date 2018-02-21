@@ -1,0 +1,11 @@
+@value variables: "../../variables.css";
+@value spaceMedium, spaceXLarge from variables;
+
+.container {
+    
+}
+
+.limiter {
+    composes: limiter from "../../globals.css";
+    padding: spaceXLarge spaceMedium;
+}

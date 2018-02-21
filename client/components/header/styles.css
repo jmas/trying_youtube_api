@@ -1,0 +1,39 @@
+@value variables: "../../variables.css";
+@value headerBgColor, headerTextColor, spaceMedium, textMedium from variables;
+
+.container {
+    background-color: headerBgColor;
+    color: headerTextColor;
+    font-size: textMedium;
+}
+
+.container :global(a) {
+    color: headerTextColor;
+}
+
+.limiter {
+    composes: limiter from "../../globals.css";
+    padding: spaceMedium;
+    display: flex;
+    justify-content: space-between;
+}
+
+.first {
+
+}
+
+.second {
+
+}
+
+.menuItem {
+    padding: spaceMedium;
+}
+
+.menuItem:global(:first-child) {
+    padding-left: 0;
+}
+
+.menuItem:global(:last-child) {
+    padding-right: 0;
+}

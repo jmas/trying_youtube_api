@@ -7,7 +7,7 @@
     "test": "NODE_ENV=test mocha test.spec.js",
     "start": "npm run build_client && npm run server",
     "server": "STATIC_PATH=$(pwd)/client_dist/ node ./server/run_server.js",
-    "build_client": "parcel build ./client/index.html --public-url ./ --out-dir ./client_dist",
+    "build_client": "NODE_ENV=production parcel build ./client/index.html --public-url ./ --out-dir ./client_dist",
     "watch_client": "parcel watch ./client/index.html --public-url ./ --out-dir ./client_dist",
     "init": "node ./server/run_script.js script=apply_schema schemaName=users",
     "update_users_stream_info": "node ./server/run_script.js script=update_users_stream_info"
@@ -15,7 +15,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hyperapp/logger": "^0.4.1",
+    "classnames": "^2.2.5",
     "googleapis": "^26.0.1",
+    "hyperapp": "^1.1.2",
     "jsonschema": "^1.2.2",
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
@@ -35,6 +38,8 @@
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.1.2",
     "mocha": "^5.0.1",
-    "parcel-bundler": "^1.6.1"
+    "node-sass": "^4.7.2",
+    "parcel-bundler": "^1.6.1",
+    "postcss-modules": "^1.1.0"
   }
 }

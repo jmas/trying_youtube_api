@@ -1,0 +1,34 @@
+@value variables: "../../variables.css";
+@value textColor, linkColor, bgColor, spaceMedium, limiterWidth from variables;
+
+:global body {
+    font-family: sans-serif;
+    color: textColor;
+    background-color: bgColor;
+    margin: 0;
+    line-height: 1.2;
+}
+
+:global * {
+    box-sizing: border-box;
+}
+
+:global a {
+    color: linkColor;
+    text-decoration: none;
+}
+
+.container {
+    /* @todo */
+}
+
+.content {
+    
+}
+
+.limiter {
+    max-width: limiterWidth;
+    margin-left: auto;
+    margin-right: auto;
+    padding: spaceMedium; 
+}
