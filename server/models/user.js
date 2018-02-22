@@ -1,6 +1,6 @@
 const Model = require('../classes/model');
 
-class User extends Model {
+module.exports = class User extends Model {
     constructor(raw) {
         super({
             displayName:            '',
@@ -34,5 +34,3 @@ class User extends Model {
         };
     }
 }
-
-module.exports = User;

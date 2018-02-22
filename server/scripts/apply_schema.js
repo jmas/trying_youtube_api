@@ -30,14 +30,14 @@ module.exports = async (args, logger) => {
  * @param {Object} options - collection options
  */
 async function createOrUpdateCollectionOptions(db, collectionName, options={}) {
-    const collectionInfo = await db.listCollections({
+    const collectionInfo = await (await db.listCollections({
         name: collectionName,
-    });
-    if (collectionInfo) {
+    })).toArray();
+    if (collectionInfo.length > 0) {
         return await db.command({
             collMod: collectionName,
             ...options,
         });
     }
-    return await db.createCollection(collectionName, schema);
+    return await db.createCollection(collectionName, options);
 }

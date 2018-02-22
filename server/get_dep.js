@@ -21,6 +21,11 @@ module.exports = lazyDeps({
         return new Users(await getDep('db'));
     },
 
+    async tags(getDep) {
+        const Tags = require('./repos/tags');
+        return new Tags(await getDep('db'));
+    },
+
     async youtube() {
         const Youtube = require('./streaming_services/youtube');
         return new Youtube(

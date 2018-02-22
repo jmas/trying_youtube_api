@@ -30,6 +30,7 @@
     "koa-static": "^4.0.2",
     "mongo-schemer": "^1.0.3",
     "mongodb": "^3.0.2",
+    "node-fetch-polyfill": "^2.0.6",
     "twitch-api": "^0.5.0"
   },
   "devDependencies": {

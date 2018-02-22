@@ -7,6 +7,7 @@
 @value spaceSmall from variables;
 @value spaceMedium from variables;
 @value radiusSmall from variables;
+@value radiusMedium from variables;
 
 .container {
 
@@ -17,6 +18,7 @@
     height: 180px;
     background-color: videoPreviewPictureBg;
     color: videoPreviewPictureBg;
+    border-radius: radiusMedium;
 }
 
 .pictureLink {

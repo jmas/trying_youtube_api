@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "required": [ "name", "count" ],
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "must be an string is required"
+        },
+        "count": {
+            "type": "number",
+            "description": "must be a number and is required"
+        }
+    }
+}
