@@ -1,8 +1,8 @@
 @value variables: "../../variables.css";
-@value textColor, linkColor, bgColor, spaceMedium, limiterWidth from variables;
+@value textColor, linkColor, bgColor, spaceMedium, limiterWidth, textFamilySansSerif from variables;
 
 :global body {
-    font-family: sans-serif;
+    font-family: textFamilySansSerif;
     color: textColor;
     background-color: bgColor;
     margin: 0;

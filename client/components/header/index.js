@@ -2,8 +2,16 @@ import { h } from 'hyperapp';
 import cx from 'classnames';
 import styles from './styles.css';
 import List from '../list';
+import Button, { BUTTON_TYPE_BUTTON, BUTTON_SEMTYPE_SUCCESS } from '../button';
 
-function HeaderListItem({ name }) {
+function HeaderListItem({ name, addStreamButton }) {
+    if (addStreamButton) {
+        return (
+            <Button
+                semType={ BUTTON_SEMTYPE_SUCCESS }
+            >{ name }</Button>
+        );
+    }
     return (
         <a href="#">{ name }</a>
     );
@@ -16,7 +24,7 @@ const firstMenuItems = [
 
 const secondMenuItems = [
     { name: 'Войти' },
-    { name: 'Добавить стрим' },
+    { name: 'Добавить стрим', addStreamButton: true },
 ];
 
 const menuClasses = {

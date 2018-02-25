@@ -1,0 +1,19 @@
+@value variables: "../../variables.css";
+@value spaceSmall, textMedium, textFamilySansSerif, borderColor, radiusSmall, textColorDark, warningColor from variables;
+
+.control {
+    width: 100%;
+    font-size: textMedium;
+    font-family: textFamilySansSerif;
+    padding: spaceSmall;
+    border: 1px solid borderColor;
+    border-radius: radiusSmall;
+    color: textColorDark;
+    display: block;
+    line-height: 1.2;
+}
+
+.control.hasError {
+    color: warningColor;
+    border-color: warningColor;
+}

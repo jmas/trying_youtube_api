@@ -1,0 +1,38 @@
+@value variables: "../../variables.css";
+@value spaceSmall, spaceMedium, textMedium, textFamilySansSerif, radiusSmall, successColor, warningColor, alertColor, primaryColor, secondaryColor from variables;
+
+.button {
+    border: 1px solid;
+    font-size: textMedium;
+    font-family: textFamilySansSerif;
+    padding: spaceSmall spaceMedium;
+    border-radius: radiusSmall;
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+}
+
+.button.primary {
+    border-color: primaryColor;
+    background-color: primaryColor;
+}
+
+.button.secondary {
+    border-color: secondaryColor;
+    background-color: secondaryColor;
+}
+
+.button.success {
+    border-color: successColor;
+    background-color: successColor;
+}
+
+.button.warning {
+    border-color: warningColor;
+    background-color: warningColor;
+}
+
+.button.alert {
+    border-color: alertColor;
+    background-color: alertColor;
+}

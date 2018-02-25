@@ -1,0 +1,44 @@
+@value variables: "../../variables.css";
+@value successColor, warningColor, alertColor, infoColor, spaceSmall, radiusMedium from variables;
+
+.container {
+    
+}
+
+.container.text.success {
+    color: successColor;
+}
+
+.container.text.warning {
+    color: warningColor;
+}
+
+.container.text.alert {
+    color: alertColor;
+}
+
+.container.text.info {
+    color: infoColor;
+}
+
+.container.box {
+    padding: spaceSmall;
+    color: white;
+    border-radius: radiusMedium;
+}
+
+.container.box.success {
+    background-color: successColor;
+}
+
+.container.box.warning {
+    background-color: warningColor;
+}
+
+.container.box.alert {
+    background-color: alertColor;
+}
+
+.container.box.info {
+    background-color: infoColor;
+}

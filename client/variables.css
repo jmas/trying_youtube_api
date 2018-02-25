@@ -1,6 +1,15 @@
+@value primaryColor: #1577D1;
+@value secondaryColor: #828282;
+
 @value textColor: #333;
-@value linkColor: #1577D1;
+@value linkColor: linkColor;
 @value bgColor: #fff;
+@value borderColor: #BDBDBD;
+
+@value successColor: #27AE60;
+@value warningColor: #EB5757;
+@value alertColor: #F2994A;
+@value infoColor: #2F80ED;
 
 @value headerBgColor: #4F4F4F;
 @value headerTextColor: #fff;
@@ -12,10 +21,15 @@
 @value spaceLarge: 20px;
 @value spaceXLarge: 40px;
 
+@value textFamilySansSerif: 'Roboto', sans-serif;
+
 @value textSmall: 12px;
 @value textMedium: 14px;
 @value textLarge: 18px;
 @value textXLarge: 24px;
+
+@value textColorDark: #333333;
+@value textColorLight: #828282;
 
 @value radiusSmall: 2px;
 @value radiusMedium: 3px;

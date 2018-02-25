@@ -19,15 +19,19 @@
 }
 
 .first {
-
+    display: flex;
+    align-items: center;
 }
 
 .second {
-
+    display: flex;
+    align-items: center;
 }
 
 .menuItem {
     padding: spaceMedium;
+    display: flex;
+    align-items: center;
 }
 
 .menuItem:global(:first-child) {

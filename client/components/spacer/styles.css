@@ -1,0 +1,30 @@
+@value variables: "../../variables.css";
+@value spaceSmall, spaceMedium, spaceLarge, spaceXLarge from variables;
+
+.spacer {
+    display: block;
+}
+
+.spacer.inline {
+    display: inline-block;
+}
+
+.spacer.small {
+    width: spaceSmall;
+    height: spaceSmall;
+}
+
+.spacer.medium {
+    width: spaceMedium;
+    height: spaceMedium;
+}
+
+.spacer.large {
+    width: spaceLarge;
+    height: spaceLarge;
+}
+
+.spacer.xlarge {
+    width: spaceXLarge;
+    height: spaceXLarge;
+}

@@ -1,0 +1,36 @@
+@value variables: "../../variables.css";
+@value spaceLarge, spaceSmall, textSmall, textMedium, warningColor, textColorDark, textColorLight from variables;
+
+.container {
+    margin-bottom: spaceLarge;
+}
+
+.label {
+    color: textColorDark;
+    font-size: textMedium;
+    margin-bottom: spaceSmall;
+    font-weight: 500;
+    display: block;
+}
+
+.container.hasError .label {
+    color: warningColor;
+}
+
+.helpText {
+    font-size: textSmall;
+    color: textColorLight;
+    margin-bottom: spaceSmall;
+}
+
+.control {
+
+}
+
+.error {
+    margin-top: spaceSmall;
+}
+
+.errorAlertContainer {
+    font-size: textSmall;
+}

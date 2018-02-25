@@ -1,6 +1,7 @@
 import { h, app } from 'hyperapp';
 import logger from '@hyperapp/logger';
 import VideosPage from './pages/videos';
+import StreamEditPage from './pages/stream_edit';
 
 const defaultState = {
     word: 'word'
@@ -18,7 +19,10 @@ const actions = {
 function view(state, actions) {
     const { word } = state;
     return (
-        <VideosPage />
+        <StreamEditPage
+            handleSave={ data => console.log('save', data) }
+            handleCancel={ () => console.log('cancel') }
+        />
     );
 }
 
